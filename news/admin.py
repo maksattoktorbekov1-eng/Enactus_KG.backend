@@ -4,26 +4,26 @@ from .models import News, NewsTranslation, NewsCategory, NewsCategoryTranslation
 
 
 class NewsTranslationInline(admin.TabularInline):
-    model               = NewsTranslation
-    extra               = 3
-    max_num             = 3
-    verbose_name        = 'Перевод'
+    model = NewsTranslation
+    extra = 3
+    max_num = 3
+    verbose_name = 'Перевод'
     verbose_name_plural = 'Переводы (RU / KG / EN)'
-    fields              = ['lang', 'title', 'excerpt', 'content', 'meta_title', 'meta_description']
+    fields = ['lang', 'title', 'excerpt', 'content', 'meta_title', 'meta_description']
 
 
 class NewsCategoryTranslationInline(admin.TabularInline):
-    model               = NewsCategoryTranslation
-    extra               = 3
-    max_num             = 3
-    verbose_name        = 'Перевод'
+    model = NewsCategoryTranslation
+    extra = 3
+    max_num = 3
+    verbose_name = 'Перевод'
     verbose_name_plural = 'Переводы (RU / KG / EN)'
-    fields              = ['lang', 'name']
+    fields = ['lang', 'name']
 
 
 @admin.register(NewsCategory)
 class NewsCategoryAdmin(admin.ModelAdmin):
-    inlines      = [NewsCategoryTranslationInline]
+    inlines = [NewsCategoryTranslationInline]
     list_display = ['get_name', 'slug', 'created_at']
     readonly_fields = ['created_at']
 
@@ -35,13 +35,13 @@ class NewsCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    inlines       = [NewsTranslationInline]
-    list_display  = ['preview_cover', 'get_title', 'category', 'is_published', 'published_at']
+    inlines = [NewsTranslationInline]
+    list_display = ['preview_cover', 'get_title', 'category', 'is_published', 'published_at']
     list_editable = ['is_published']
-    list_filter   = ['is_published', 'category']
+    list_filter = ['is_published', 'category']
     search_fields = ['slug', 'translations__title']
     readonly_fields = ['slug', 'created_at', 'updated_at']
-    ordering      = ['-published_at']
+    ordering = ['-published_at']
 
     fieldsets = [
         ('Основное', {

@@ -13,7 +13,7 @@ class NewsCategoryPublicSerializer(serializers.ModelSerializer):
     name = serializers.SerializerMethodField()
 
     class Meta:
-        model  = NewsCategory
+        model = NewsCategory
         fields = ['id', 'slug', 'name']
 
     def get_name(self, obj):
@@ -61,7 +61,7 @@ class NewsTranslationSerializer(serializers.ModelSerializer):
 
 class NewsListPublicSerializer(serializers.ModelSerializer):
     title = serializers.SerializerMethodField()
-    excerpt  = serializers.SerializerMethodField()
+    excerpt = serializers.SerializerMethodField()
     category = NewsCategoryPublicSerializer(read_only=True)
 
     class Meta:
@@ -84,8 +84,8 @@ class NewsListPublicSerializer(serializers.ModelSerializer):
 
 
 class NewsPublicSerializer(NewsListPublicSerializer):
-    content          = serializers.SerializerMethodField()
-    meta_title       = serializers.SerializerMethodField()
+    content = serializers.SerializerMethodField()
+    meta_title = serializers.SerializerMethodField()
     meta_description = serializers.SerializerMethodField()
 
     class Meta(NewsListPublicSerializer.Meta):
@@ -108,7 +108,7 @@ class NewsAdminSerializer(serializers.ModelSerializer):
     translations = NewsTranslationSerializer(many=True)
 
     class Meta:
-        model  = News
+        model = News
         fields = [
             'id', 'slug', 'cover', 'category',
             'is_published', 'published_at',

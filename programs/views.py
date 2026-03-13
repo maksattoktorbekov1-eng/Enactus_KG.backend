@@ -9,7 +9,7 @@ from .serializers import (
 
 
 class ProgramListView(generics.ListAPIView):
-    serializer_class   = ProgramListPublicSerializer
+    serializer_class = ProgramListPublicSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
@@ -22,10 +22,10 @@ class ProgramListView(generics.ListAPIView):
 
 
 class ProgramDetailView(generics.RetrieveAPIView):
-    serializer_class   = ProgramPublicSerializer
+    serializer_class = ProgramPublicSerializer
     permission_classes = [permissions.AllowAny]
-    lookup_field       = 'slug'
-    swagger_schema     = None
+    lookup_field = 'slug'
+    swagger_schema = None
 
     def get_queryset(self):
         return Program.objects.filter(is_active=True).prefetch_related(
@@ -39,10 +39,10 @@ class ProgramDetailView(generics.RetrieveAPIView):
 
 
 class AdminProgramListCreateView(generics.ListCreateAPIView):
-    serializer_class   = ProgramAdminSerializer
+    serializer_class = ProgramAdminSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
-    swagger_schema     = None
+    parser_classes = [MultiPartParser, FormParser]
+    swagger_schema = None
 
     def get_queryset(self):
         return Program.objects.prefetch_related(
@@ -51,10 +51,10 @@ class AdminProgramListCreateView(generics.ListCreateAPIView):
 
 
 class AdminProgramDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = ProgramAdminSerializer
+    serializer_class = ProgramAdminSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
-    swagger_schema     = None
+    parser_classes = [MultiPartParser, FormParser]
+    swagger_schema = None
 
     def get_queryset(self):
         return Program.objects.prefetch_related(
@@ -67,9 +67,9 @@ class AdminProgramDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AdminProgramGalleryListCreateView(generics.ListCreateAPIView):
-    serializer_class   = ProgramGallerySerializer
+    serializer_class = ProgramGallerySerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         return ProgramGallery.objects.filter(program_id=self.kwargs['program_id'])
@@ -79,18 +79,18 @@ class AdminProgramGalleryListCreateView(generics.ListCreateAPIView):
 
 
 class AdminProgramGalleryDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = ProgramGallerySerializer
+    serializer_class = ProgramGallerySerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         return ProgramGallery.objects.filter(program_id=self.kwargs['program_id'])
 
 
 class AdminProgramTeamListCreateView(generics.ListCreateAPIView):
-    serializer_class   = ProgramTeamSerializer
+    serializer_class = ProgramTeamSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         return ProgramTeam.objects.filter(program_id=self.kwargs['program_id'])
@@ -100,18 +100,18 @@ class AdminProgramTeamListCreateView(generics.ListCreateAPIView):
 
 
 class AdminProgramTeamDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = ProgramTeamSerializer
+    serializer_class = ProgramTeamSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         return ProgramTeam.objects.filter(program_id=self.kwargs['program_id'])
 
 
 class AdminProgramAdvisorListCreateView(generics.ListCreateAPIView):
-    serializer_class   = ProgramAdvisorSerializer
+    serializer_class = ProgramAdvisorSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         return ProgramAdvisor.objects.filter(program_id=self.kwargs['program_id'])
@@ -121,18 +121,18 @@ class AdminProgramAdvisorListCreateView(generics.ListCreateAPIView):
 
 
 class AdminProgramAdvisorDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = ProgramAdvisorSerializer
+    serializer_class = ProgramAdvisorSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get_queryset(self):
         return ProgramAdvisor.objects.filter(program_id=self.kwargs['program_id'])
 
 
 class AdminProgramTimelineListCreateView(generics.ListCreateAPIView):
-    serializer_class   = ProgramTimelineSerializer
+    serializer_class = ProgramTimelineSerializer
     permission_classes = [permissions.IsAdminUser]
-    swagger_schema     = None
+    swagger_schema = None
 
     def get_queryset(self):
         return ProgramTimeline.objects.filter(
@@ -144,9 +144,9 @@ class AdminProgramTimelineListCreateView(generics.ListCreateAPIView):
 
 
 class AdminProgramTimelineDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = ProgramTimelineSerializer
+    serializer_class = ProgramTimelineSerializer
     permission_classes = [permissions.IsAdminUser]
-    swagger_schema     = None
+    swagger_schema = None
 
     def get_queryset(self):
         return ProgramTimeline.objects.filter(

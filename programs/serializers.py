@@ -79,7 +79,7 @@ class ProgramTimelineSerializer(serializers.ModelSerializer):
 
 
 class ProgramListPublicSerializer(serializers.ModelSerializer):
-    title       = serializers.SerializerMethodField()
+    title = serializers.SerializerMethodField()
     description = serializers.SerializerMethodField()
 
     class Meta:
@@ -105,16 +105,16 @@ class ProgramListPublicSerializer(serializers.ModelSerializer):
 
 
 class ProgramPublicSerializer(serializers.ModelSerializer):
-    title            = serializers.SerializerMethodField()
-    description      = serializers.SerializerMethodField()
-    content          = serializers.SerializerMethodField()
-    instruction      = serializers.SerializerMethodField()
-    meta_title       = serializers.SerializerMethodField()
+    title = serializers.SerializerMethodField()
+    description = serializers.SerializerMethodField()
+    content = serializers.SerializerMethodField()
+    instruction = serializers.SerializerMethodField()
+    meta_title = serializers.SerializerMethodField()
     meta_description = serializers.SerializerMethodField()
-    gallery          = ProgramGallerySerializer(many=True, read_only=True)
-    teams            = ProgramTeamSerializer(many=True, read_only=True)
-    advisors         = ProgramAdvisorSerializer(many=True, read_only=True)
-    timeline         = ProgramTimelineSerializer(many=True, read_only=True)
+    gallery = ProgramGallerySerializer(many=True, read_only=True)
+    teams = ProgramTeamSerializer(many=True, read_only=True)
+    advisors = ProgramAdvisorSerializer(many=True, read_only=True)
+    timeline = ProgramTimelineSerializer(many=True, read_only=True)
 
     
     class Meta:
@@ -166,10 +166,10 @@ class ProgramPublicSerializer(serializers.ModelSerializer):
 
 class ProgramAdminSerializer(serializers.ModelSerializer):
     translations = ProgramTranslationSerializer(many=True)
-    gallery      = ProgramGallerySerializer(many=True, read_only=True)
-    teams        = ProgramTeamSerializer(many=True, read_only=True)
-    advisors     = ProgramAdvisorSerializer(many=True, read_only=True)
-    timeline     = ProgramTimelineSerializer(many=True, read_only=True)
+    gallery = ProgramGallerySerializer(many=True, read_only=True)
+    teams = ProgramTeamSerializer(many=True, read_only=True)
+    advisors = ProgramAdvisorSerializer(many=True, read_only=True)
+    timeline = ProgramTimelineSerializer(many=True, read_only=True)
 
     
     class Meta:

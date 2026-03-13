@@ -9,7 +9,7 @@ from .serializers import (
 
 
 class NewsCategoryListView(generics.ListAPIView):
-    serializer_class   = NewsCategoryPublicSerializer
+    serializer_class = NewsCategoryPublicSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
@@ -22,7 +22,7 @@ class NewsCategoryListView(generics.ListAPIView):
 
 
 class NewsListView(generics.ListAPIView):
-    serializer_class   = NewsListPublicSerializer
+    serializer_class = NewsListPublicSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
@@ -47,9 +47,9 @@ class NewsListView(generics.ListAPIView):
 
 
 class NewsDetailView(generics.RetrieveAPIView):
-    serializer_class   = NewsPublicSerializer
+    serializer_class = NewsPublicSerializer
     permission_classes = [permissions.AllowAny]
-    lookup_field       = 'slug'
+    lookup_field = 'slug'
 
     def get_queryset(self):
         return News.objects.filter(is_published=True).select_related(
@@ -63,10 +63,10 @@ class NewsDetailView(generics.RetrieveAPIView):
 
 
 class AdminNewsListCreateView(generics.ListCreateAPIView):
-    serializer_class   = NewsAdminSerializer
+    serializer_class = NewsAdminSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
-    swagger_schema     = None
+    parser_classes = [MultiPartParser, FormParser]
+    swagger_schema = None
 
     def get_queryset(self):
         return News.objects.select_related('category').prefetch_related(
@@ -75,10 +75,10 @@ class AdminNewsListCreateView(generics.ListCreateAPIView):
 
 
 class AdminNewsDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = NewsAdminSerializer
+    serializer_class = NewsAdminSerializer
     permission_classes = [permissions.IsAdminUser]
-    parser_classes     = [MultiPartParser, FormParser]
-    swagger_schema     = None
+    parser_classes = [MultiPartParser, FormParser]
+    swagger_schema = None
 
     def get_queryset(self):
         return News.objects.prefetch_related('translations').all()
@@ -89,7 +89,7 @@ class AdminNewsDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AdminNewsCategoryListCreateView(generics.ListCreateAPIView):
-    serializer_class   = NewsCategoryAdminSerializer
+    serializer_class = NewsCategoryAdminSerializer
     permission_classes = [permissions.IsAdminUser]
 
     def get_queryset(self):
@@ -97,6 +97,6 @@ class AdminNewsCategoryListCreateView(generics.ListCreateAPIView):
 
 
 class AdminNewsCategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class   = NewsCategoryAdminSerializer
+    serializer_class = NewsCategoryAdminSerializer
     permission_classes = [permissions.IsAdminUser]
-    queryset           = NewsCategory.objects.prefetch_related('translations').all()
+    queryset = NewsCategory.objects.prefetch_related('translations').all()

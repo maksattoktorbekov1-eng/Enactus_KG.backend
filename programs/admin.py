@@ -8,54 +8,54 @@ from .models import (
 
 
 class ProgramTranslationInline(admin.TabularInline):
-    model       = ProgramTranslation
-    extra       = 3
-    max_num     = 3
-    verbose_name        = 'Перевод'
+    model = ProgramTranslation
+    extra = 3
+    max_num = 3
+    verbose_name = 'Перевод'
     verbose_name_plural = 'Переводы (RU / KG / EN)'
-    fields      = ['lang', 'title', 'description', 'content', 'instruction', 'meta_title', 'meta_description']
+    fields = ['lang', 'title', 'description', 'content', 'instruction', 'meta_title', 'meta_description']
 
 
 class ProgramGalleryInline(admin.TabularInline):
-    model               = ProgramGallery
-    extra               = 1
-    verbose_name        = 'Фото'
+    model = ProgramGallery
+    extra = 1
+    verbose_name = 'Фото'
     verbose_name_plural = 'Галерея'
-    fields              = ['image', 'caption', 'sort_order']
+    fields = ['image', 'caption', 'sort_order']
 
 
 class ProgramTeamInline(admin.TabularInline):
-    model               = ProgramTeam
-    extra               = 1
-    verbose_name        = 'Команда'
+    model = ProgramTeam
+    extra = 1
+    verbose_name = 'Команда'
     verbose_name_plural = 'Команды'
-    fields              = ['name', 'university', 'logo', 'is_active', 'sort_order']
+    fields = ['name', 'university', 'logo', 'is_active', 'sort_order']
 
 
 class ProgramAdvisorInline(admin.TabularInline):
-    model               = ProgramAdvisor
-    extra               = 1
-    verbose_name        = 'Советник'
+    model = ProgramAdvisor
+    extra = 1
+    verbose_name = 'Советник'
     verbose_name_plural = 'Советники'
-    fields              = ['full_name', 'position', 'photo', 'sort_order']
+    fields = ['full_name', 'position', 'photo', 'sort_order']
 
 
 class ProgramTimelineTranslationInline(admin.TabularInline):
-    model               = ProgramTimelineTranslation
-    extra               = 3
-    max_num             = 3
-    verbose_name        = 'Перевод'
+    model = ProgramTimelineTranslation
+    extra = 3
+    max_num = 3
+    verbose_name = 'Перевод'
     verbose_name_plural = 'Переводы (RU / KG / EN)'
-    fields              = ['lang', 'title', 'description']
+    fields = ['lang', 'title', 'description']
 
 
 @admin.register(ProgramTimeline)
 class ProgramTimelineAdmin(admin.ModelAdmin):
-    inlines             = [ProgramTimelineTranslationInline]
-    list_display        = ['program', 'year', 'sort_order']
-    list_editable       = ['sort_order']
-    ordering            = ['sort_order']
-    verbose_name        = 'Этап таймлайна'
+    inlines = [ProgramTimelineTranslationInline]
+    list_display = ['program', 'year', 'sort_order']
+    list_editable = ['sort_order']
+    ordering = ['sort_order']
+    verbose_name = 'Этап таймлайна'
     verbose_name_plural = 'Таймлайн'
 
 
@@ -68,12 +68,12 @@ class ProgramAdmin(admin.ModelAdmin):
         ProgramAdvisorInline,
     ]
 
-    list_display   = ['preview_image', 'get_title', 'program_type', 'is_active', 'sort_order', 'updated_at']
-    list_editable  = ['is_active', 'sort_order']
-    list_filter    = ['program_type', 'is_active']
-    search_fields  = ['slug', 'translations__title']
+    list_display = ['preview_image', 'get_title', 'program_type', 'is_active', 'sort_order', 'updated_at']
+    list_editable = ['is_active', 'sort_order']
+    list_filter = ['program_type', 'is_active']
+    search_fields = ['slug', 'translations__title']
     readonly_fields = ['slug', 'created_at', 'updated_at']
-    ordering       = ['sort_order']
+    ordering = ['sort_order']
 
     fieldsets = [
         ('Основное', {
