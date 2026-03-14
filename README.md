@@ -4,7 +4,8 @@
 Автор: Максат Токторбеков
 Дата: 14 марта 2026
 
-###Стек
+Стек:
+
 Python 3.12
 Django 5.2
 Django REST Framework 3.16
@@ -12,7 +13,7 @@ PostgreSQL 16
 JWT авторизация
 
 
-###Авторизация
+Авторизация
 Все /api/admin/ эндпоинты требуют JWT токен в заголовке:
 Authorization: Bearer <access_token>
 Получить токен:
@@ -27,12 +28,12 @@ POST /api/auth/token/refresh/
     "refresh": "<refresh_token>"
 }
 
-###Мультиязычность
+Мультиязычность
 Все публичные эндпоинты принимают параметр ?lang=. Доступные значения: ru, kg, en. Если перевод на запрошенный язык отсутствует — возвращается русская версия.
 GET /api/programs/?lang=kg
 GET /api/news/?lang=en
 
-##Программы
+Программы
 Публичные
 Список программ
 GET /api/programs/?lang=ru
@@ -96,8 +97,20 @@ json{
             "support_initiatives": "",
             "meta_title": "Enactus KG",
             "meta_description": "SEO описание"
+        },
+        {
+            "lang": "kg",
+            "title": "Enactus программасы",
+            "description": "Кыскача сүрөттөмө",
+            "content": "Толук текст",
+            "instruction": "Нускама",
+            "career_guidance": "",
+            "support_initiatives": "",
+            "meta_title": "Enactus KG",
+            "meta_description": "SEO сүрөттөмө"
         }
-
+    ]
+}
 ```
 
 > Поля `career_guidance` и `support_initiatives` заполняются только для типа `youth_initiatives`.
@@ -306,7 +319,7 @@ DELETE /api/admin/news/categories/<id>/
 
 ---
 
-## Медиафайлы
+##Медиафайлы
 
 Все загружаемые файлы доступны по адресу:
 ```
